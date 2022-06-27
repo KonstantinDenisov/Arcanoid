@@ -125,6 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 2
-  _point: 2
+  _points: 2
   _images:
   - {fileID: 21300000, guid: e89efc2f3acec0a4d8f856f862430df1, type: 3}

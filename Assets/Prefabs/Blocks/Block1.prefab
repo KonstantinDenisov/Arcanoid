@@ -125,5 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 1
-  _point: 1
+  _points: 1
   _images: []

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +7,8 @@ public class CheckWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.Instance.ReloadScene();
+        Statistics.Instance.Attempt++;
     }
 
     #endregion

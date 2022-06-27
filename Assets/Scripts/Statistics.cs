@@ -2,5 +2,6 @@
 
 public class Statistics : SingletonMonoBehaviour<Statistics>
 {
-    [SerializeField] public int Points;
+    public int Points;
+    public int Attempt = 1;
 }
