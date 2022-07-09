@@ -7,8 +7,9 @@ public class CheckWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        SceneLoader.Instance.ReloadScene();
         Statistics.Instance.Attempt++;
+        Statistics.Instance.NextImage();
+        SceneLoader.Instance.ReloadScene();
     }
 
     #endregion

@@ -127,3 +127,4 @@ MonoBehaviour:
   _hp: 1
   _points: 1
   _images: []
+  _spriteRenderer: {fileID: 1923817354350206037}

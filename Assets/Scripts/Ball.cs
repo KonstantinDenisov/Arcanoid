@@ -1,20 +1,45 @@
 ﻿using System;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
-public class Ball : MonoBehaviour
+public class Ball : SingletonMonoBehaviour<Ball>
+
 {
     #region Variables
 
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private Vector2 _startDirection;
-    //private Vector2 _startDirection = new Vector2(UnityEngine.Random.Range(0f, 1f)*10, UnityEngine.Random.Range(0f, 1f)*10);
     [SerializeField] private Pad _pad;
 
+    [SerializeField] private float _speed = 5f;
+    
+    [Range(-1,1)]
+    [SerializeField] private float _xMin;
+    
+    [Range(-1,1)]
+    [SerializeField] private float _xMax;
+    
+    [Range(0.3f,1)]
+    [SerializeField] private float _yMin;
+    
+    [Range(0.3f,1)]
+    [SerializeField] private float _yMax;
+
+    [SerializeField] private Transform _transform;
+    
+    
+    private Vector2 _startDirection; 
+    
     #endregion
+    
 
 
     #region Unity LifeCycle
+
+    private void Awake()
+    {
+        CalculateDirection();
+  
+    }
 
     private void OnDrawGizmos()
     {
@@ -40,6 +65,17 @@ public class Ball : MonoBehaviour
         Vector3 currentPosition = transform.position;
         currentPosition.x = padPosition.x;
         transform.position = currentPosition;
+    }
+
+    #endregion
+
+
+    #region Private Methods
+
+    private void CalculateDirection()
+    {
+        Vector2 randomDirection = new Vector2(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
+        _startDirection = randomDirection.normalized * _speed; 
     }
 
     #endregion

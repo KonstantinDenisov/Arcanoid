@@ -7,12 +7,16 @@ public class Pad : MonoBehaviour
 
     private void Update()
     {
-        Vector3 mousePositionInPixels = Input.mousePosition;
-        Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
+        if (PauseManager.Instance.IsPaused == true)
+            return;
+        
+            Vector3 mousePositionInPixels = Input.mousePosition;
+            Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
 
-        Vector3 currentPosition = transform.position;
-        currentPosition.x = mousePositionInUnits.x;
-        transform.position = currentPosition;
+            Vector3 currentPosition = transform.position;
+            currentPosition.x = mousePositionInUnits.x;
+            transform.position = currentPosition;
+
     }
 
     #endregion
