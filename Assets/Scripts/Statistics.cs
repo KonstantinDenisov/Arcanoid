@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Statistics : SingletonMonoBehaviour<Statistics>
@@ -15,6 +16,20 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     #endregion
 
 
+    #region Unity LifeCycle
+
+    private void Start()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed += PerformWinn;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWinn;
+    }
+
+    #endregion
+    
     #region Public Methods
 
     public void NextImage()
@@ -23,6 +38,7 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
         Iterator++;
         _hp--;
         CheckGameOver();
+        
     }
 
     #endregion
@@ -34,6 +50,11 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     {
         //if (_hp ==0)
             
+    }
+
+    private void PerformWinn()
+    {
+        
     }
 
     #endregion

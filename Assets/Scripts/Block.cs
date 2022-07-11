@@ -9,7 +9,9 @@ using Image = UnityEngine.UI.Image;
 public class Block : MonoBehaviour
 {
     #region Events
-    public event Action OnDestroyed;
+    public static event Action <Block> OnDestroyed;
+
+    public static event Action<Block> OnCreated; 
 
     #endregion
     
@@ -28,6 +30,11 @@ public class Block : MonoBehaviour
 
     #region Unity Lifecycle
 
+    private void Start()
+    {
+        OnCreated?.Invoke(this);
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         Statistics.Instance.Points += _points;
@@ -42,7 +49,7 @@ public class Block : MonoBehaviour
 
     private void OnDestroy()
     {
-        OnDestroyed?.Invoke();
+        OnDestroyed?.Invoke(this);
     }
 
     #endregion

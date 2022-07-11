@@ -7,36 +7,42 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         
         private int _blocksCount;
 
+        public event Action OnAllBlocksDestroyed;
+
         #endregion
         
         #region Unity lifecycle
 
-        private void Start()
+        private void Awake()
         {
-            Block[] blocks = FindObjectsOfType<Block>();
-            _blocksCount = blocks.Length;
-
-            foreach (Block block in blocks)
-            {
-                block.OnDestroyed += BlockDestroyed;
-            }
+            Block.OnCreated += BlockDestroyed;
+            Block.OnCreated += BlockCreated;
         }
 
-      
+        private void OnDestroy()
+        {
+            Block.OnDestroyed -= BlockDestroyed;
+            Block.OnCreated -= BlockCreated;
+        }
 
         #endregion
 
 
         #region Private Methods
 
-        private void BlockDestroyed()
+        private void BlockDestroyed(Block block)
         {
             _blocksCount--;
             
             if (_blocksCount == 0)
             {
-                SceneLoader.Instance.LoadScene(1);
+                OnAllBlocksDestroyed?.Invoke();
             }
+        }
+
+        private void BlockCreated(Block obj)
+        {
+            _blocksCount++;
         }
 
         #endregion
