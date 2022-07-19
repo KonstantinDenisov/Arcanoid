@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CheckWall : MonoBehaviour
+    public class CheckWall : SingletonMonoBehaviour<CheckWall>
+
+//public class CheckWall : MonoBehaviour
 {
     #region Unity Lifecycle
 

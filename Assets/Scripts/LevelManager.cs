@@ -15,7 +15,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
         private void Awake()
         {
-            Block.OnCreated += BlockDestroyed;
+            Block.OnDestroyed += BlockDestroyed;
             Block.OnCreated += BlockCreated;
         }
 
@@ -30,6 +30,11 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
         #region Private Methods
 
+        private void BlockCreated(Block obj)
+        {
+            _blocksCount++;
+        }
+
         private void BlockDestroyed(Block block)
         {
             _blocksCount--;
@@ -38,11 +43,6 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
             {
                 OnAllBlocksDestroyed?.Invoke();
             }
-        }
-
-        private void BlockCreated(Block obj)
-        {
-            _blocksCount++;
         }
 
         #endregion

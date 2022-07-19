@@ -1,17 +1,19 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
 
 public class Statistics : SingletonMonoBehaviour<Statistics>
 {
     #region Variables
 
+    [SerializeField] private UnityEngine.UI.Image _gameOverLabel;
     public int Points;
     public int Attempt = 1;
     public Sprite[] HP;
     [SerializeField] private SpriteRenderer _hpSR;
     public int Iterator = 1;
-    private int _hp = 3;
+    [SerializeField] private int _hp = 4;
 
     #endregion
 
@@ -48,7 +50,8 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
 
     private void CheckGameOver()
     {
-        //if (_hp ==0)
+        if (_hp ==0)
+            _gameOverLabel.gameObject.SetActive(true);
             
     }
 

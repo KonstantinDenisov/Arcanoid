@@ -18,6 +18,7 @@ public class PauseManager : SingletonMonoBehaviour<PauseManager>
         if (Input.GetKeyDown(KeyCode.Escape))
             TogglePause();
     }
+    #endregion
 
 
     #region Private Methods
@@ -30,5 +31,5 @@ public class PauseManager : SingletonMonoBehaviour<PauseManager>
 
     #endregion
 
-    #endregion
+    
 }

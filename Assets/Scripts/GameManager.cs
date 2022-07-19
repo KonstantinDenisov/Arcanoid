@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,21 @@ public class GameManager : MonoBehaviour
 
 
     #region Unity Lifecycle
-    
+
+    private void Start()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed += PerdormWin;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed -= PerdormWin;
+    }
+
+    private void PerdormWin()
+    {
+        throw new NotImplementedException();
+    }
 
     private void Update()
     {
