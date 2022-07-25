@@ -17,25 +17,25 @@ public class Block : MonoBehaviour
     
     #region Variables
 
-    [SerializeField] private int _hp;
-    [SerializeField] private int _points;
-    [SerializeField] private Sprite[] _images;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    private int _iterator = 1;
+    [SerializeField] protected int _hp;
+    [SerializeField] protected int _points;
+    [SerializeField] protected Sprite[] _images;
+    [SerializeField] protected SpriteRenderer _spriteRenderer;
+    protected int _iterator = 1;
 
-    private int _spriteIndex;
+    protected int _spriteIndex;
 
     #endregion
 
 
     #region Unity Lifecycle
 
-    private void Start()
+    protected virtual void Start()
     {
         OnCreated?.Invoke(this);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    protected void OnCollisionEnter2D(Collision2D col)
     {
         Statistics.Instance.Points += _points;
         _hp--;
@@ -47,7 +47,7 @@ public class Block : MonoBehaviour
         _points--;
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
     }

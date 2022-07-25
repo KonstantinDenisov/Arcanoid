@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PauseImage : SingletonMonoBehaviour<PauseImage>
+public class PauseImage : MonoBehaviour
 {
     #region Variable
 

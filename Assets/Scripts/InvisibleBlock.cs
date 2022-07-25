@@ -7,31 +7,19 @@ public class InvisibleBlock : Block
 {
     #region Variables
 
-    [SerializeField] private int _hp;
-    [SerializeField] private int _points;
-    [SerializeField] private Sprite[] _images;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    private int _iterator = 1;
-
-    private int _spriteIndex;
-
-    private Color _startColor;
-
     #endregion
 
 
     #region Unity Lifecycle
 
-    private void Start()
+    protected override void Start()
     {
-        //_spriteRenderer.color.a = 0f;
-        
         Color spriteRendererColor = _spriteRenderer.color;
         spriteRendererColor.a = 0;
         _spriteRenderer.color = spriteRendererColor;
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    protected void OnCollisionEnter2D(Collision2D col)
     {
         Color spriteRendererColor = _spriteRenderer.color;
         spriteRendererColor.a = 1;

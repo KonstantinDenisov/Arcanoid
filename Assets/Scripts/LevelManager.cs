@@ -13,7 +13,7 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
         
         #region Unity lifecycle
 
-        private void Awake()
+        protected override void Awake()
         {
             Block.OnDestroyed += BlockDestroyed;
             Block.OnCreated += BlockCreated;

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Ball : SingletonMonoBehaviour<Ball>
+public class Ball : MonoBehaviour
 
 {
     #region Variables
