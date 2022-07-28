@@ -7,6 +7,8 @@ public class InvisibleBlock : Block
 {
     #region Variables
 
+    private bool _isVisible;
+
     #endregion
 
 
@@ -14,28 +16,35 @@ public class InvisibleBlock : Block
 
     protected override void Start()
     {
-        Color spriteRendererColor = _spriteRenderer.color;
-        spriteRendererColor.a = 0;
-        _spriteRenderer.color = spriteRendererColor;
+        base.Start();
+       SetAlpha(0f);
     }
 
-    protected void OnCollisionEnter2D(Collision2D col)
+    #endregion
+    
+    #region Protected Methods
+
+    protected override void ApplyDamage()
+    {
+        SetAlpha(1f);
+        
+        if (_isVisible)
+            base.ApplyDamage();
+
+        _isVisible = true;
+
+    }
+
+    #endregion
+
+
+    #region Private Methods
+
+    private void SetAlpha(float alpha)
     {
         Color spriteRendererColor = _spriteRenderer.color;
-        spriteRendererColor.a = 1;
-        _spriteRenderer.color = spriteRendererColor;
-        
-        Statistics.Instance.Points += _points;
-        _hp--;
-        if (_hp == 0)
-            Destroy(gameObject);
-
-        _spriteRenderer.sprite = _images[_images.Length - _iterator];
-        _iterator++;
-        _points--;
-        
-        
-        
+        spriteRendererColor.a = alpha;
+        _spriteRenderer.color = spriteRendererColor; 
     }
 
     #endregion

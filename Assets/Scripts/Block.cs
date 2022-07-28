@@ -8,12 +8,7 @@ using Image = UnityEngine.UI.Image;
 
 public class Block : MonoBehaviour
 {
-    #region Events
-    public static event Action <Block> OnDestroyed;
-
-    public static event Action<Block> OnCreated; 
-
-    #endregion
+   
     
     #region Variables
 
@@ -21,9 +16,16 @@ public class Block : MonoBehaviour
     [SerializeField] protected int _points;
     [SerializeField] protected Sprite[] _images;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
-    protected int _iterator = 1;
+    protected int Iterator = 1;
 
-    protected int _spriteIndex;
+    
+
+    #endregion
+    
+    #region Events
+    public static event Action <Block> OnDestroyed;
+
+    public static event Action<Block> OnCreated; 
 
     #endregion
 
@@ -37,19 +39,31 @@ public class Block : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D col)
     {
-        Statistics.Instance.Points += _points;
-        _hp--;
-        if (_hp == 0)
-            Destroy(gameObject);
-
-        _spriteRenderer.sprite = _images[_images.Length - _iterator];
-        _iterator++;
-        _points--;
+        ApplyDamage();
     }
 
     protected void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
+    }
+
+    #endregion
+
+
+    #region Protected Methods
+
+    protected virtual void ApplyDamage()
+    {
+        Statistics.Instance.Points += _points;
+        _hp--;
+        if (_hp == 0)
+            Destroy(gameObject);
+        
+        if (_images.Length - Iterator >=0)
+            _spriteRenderer.sprite = _images[_images.Length - Iterator];
+        
+        Iterator++;
+        _points--;
     }
 
     #endregion

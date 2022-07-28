@@ -19,5 +19,10 @@ public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void LoadNextLevel()
+    {
+        
+    }
+
     #endregion
 }

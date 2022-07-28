@@ -15,6 +15,8 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
         protected override void Awake()
         {
+            base.Awake();
+            
             Block.OnDestroyed += BlockDestroyed;
             Block.OnCreated += BlockCreated;
         }

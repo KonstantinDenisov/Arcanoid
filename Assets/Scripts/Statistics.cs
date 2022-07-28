@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Image = UnityEngine.UIElements.Image;
 
@@ -7,13 +8,13 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
 {
     #region Variables
 
-    [SerializeField] private UnityEngine.UI.Image _gameOverLabel;
+    
     public int Points;
     public int Attempt = 1;
-    public Sprite[] HP;
-    [SerializeField] private SpriteRenderer _hpSR;
+    // public Sprite[] HP;
+   // [SerializeField] private SpriteRenderer _hpSR;
     public int Iterator = 1;
-    [SerializeField] private int _hp = 4;
+    [FormerlySerializedAs("_hp")] [SerializeField] public int HPCount = 4;
 
     #endregion
 
@@ -36,11 +37,10 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
 
     public void NextImage()
     {
-        _hpSR.sprite = HP[HP.Length - Iterator];
+        //if (HP.Length - Iterator >=0)
+          //  _hpSR.sprite = HP[HP.Length - Iterator];
         Iterator++;
-        _hp--;
-        CheckGameOver();
-        
+        HPCount--;
     }
 
     #endregion
@@ -48,12 +48,7 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
 
     #region Private Methods
 
-    private void CheckGameOver()
-    {
-        if (_hp ==0)
-            _gameOverLabel.gameObject.SetActive(true);
-            
-    }
+   
 
     private void PerformWinn()
     {

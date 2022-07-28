@@ -27,7 +27,9 @@ public class Ball : MonoBehaviour
     [SerializeField] private Transform _transform;
     
     
-    private Vector2 _startDirection; 
+    private Vector2 _startDirection;
+
+    private Vector2 _startPosition;
     
     #endregion
     
@@ -37,6 +39,7 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
+        _startPosition = transform.position;
         CalculateDirection();
   
     }
@@ -53,6 +56,11 @@ public class Ball : MonoBehaviour
 
 
     #region Public Methods
+
+    public void RestartBall()
+    {
+        transform.position = _startPosition;
+    }
 
     public void StartMove()
     {
