@@ -1,9 +1,16 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using System;
 
 public class PauseManager : SingletonMonoBehaviour<PauseManager>
 
 {
+    #region Events
+
+    public event Action<bool> OnPaused;
+
+    #endregion
+    
     #region Properties
 
     public bool IsPaused { get; private set; }
@@ -37,6 +44,7 @@ public class PauseManager : SingletonMonoBehaviour<PauseManager>
     {
         IsPaused = !IsPaused;
         Time.timeScale = IsPaused ? 0 : 1;
+        OnPaused?.Invoke(IsPaused);
     }
 
    

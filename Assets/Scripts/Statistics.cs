@@ -38,7 +38,7 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     public void NextImage()
     {
         //if (HP.Length - Iterator >=0)
-          //  _hpSR.sprite = HP[HP.Length - Iterator];
+          //_hpSR.sprite = HP[HP.Length - Iterator];
         Iterator++;
         HPCount--;
     }

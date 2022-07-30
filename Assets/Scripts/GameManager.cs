@@ -10,13 +10,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     #region Variables
 
     private Ball _ball;
-    private bool _isStarted;
+    
 
     #endregion
     
     #region Events
 
     public event Action OnGameOver;
+    public event Action OnGameWinn; 
 
     #endregion
 
@@ -40,20 +41,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
     }
 
-    private void Update()
-    {
-
-        if (_isStarted)
-            return;
-
-        _ball.MoveWithPad();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartBall();
-        }
-    }
-
     #endregion
 
 
@@ -61,12 +48,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     public void LoseLife()
     {
-        _isStarted = false;
+        FindObjectOfType<Ball>().RestartBall();
         _ball.RestartBall();
         Statistics.Instance.Attempt++;
         Statistics.Instance.NextImage();
         CheckGameOver();
-        //CheckWin();
+        
     }
 
     #endregion
@@ -74,10 +61,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     #region Private Methods
 
-    private void CheckWin()
-    {
-        throw new NotImplementedException();
-    }
+  
 
     private void CheckGameOver()
     {
@@ -88,21 +72,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
             
     }
 
-    private void PerformGameOver()
-    {
-        
-    }
-
     private void PerformWin()
     {
-        SceneLoader.Instance.LoadNextLevel();
+        OnGameWinn?.Invoke();
     }
 
-    private void StartBall()
-    {
-        _isStarted = true;
-        _ball.StartMove();
-    }
+  
     
 
     #endregion

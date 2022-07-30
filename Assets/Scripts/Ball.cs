@@ -31,11 +31,18 @@ public class Ball : MonoBehaviour
 
     private Vector2 _startPosition;
     
+    private bool _isStarted;
+    
     #endregion
     
 
 
     #region Unity LifeCycle
+
+    private void Start()
+    {
+        
+    }
 
     private void Awake()
     {
@@ -44,12 +51,17 @@ public class Ball : MonoBehaviour
   
     }
 
-    private void OnDrawGizmos()
+    private void Update()
     {
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3) _startDirection);
+        if (_isStarted)
+            return;
 
-        Gizmos.color = Color.black;
-        Gizmos.DrawLine(transform.position, transform.position + (Vector3) _rb.velocity);
+        MoveWithPad();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartBall();
+        }
     }
 
     #endregion
@@ -59,6 +71,8 @@ public class Ball : MonoBehaviour
 
     public void RestartBall()
     {
+        _isStarted = false;
+        _rb.velocity = Vector2.zero;
         transform.position = _startPosition;
     }
 
@@ -80,11 +94,28 @@ public class Ball : MonoBehaviour
 
     #region Private Methods
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3) _startDirection);
+
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(transform.position, transform.position + (Vector3) _rb.velocity);
+    }
+
     private void CalculateDirection()
     {
         Vector2 randomDirection = new Vector2(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
         _startDirection = randomDirection.normalized * _speed; 
     }
+    
+    private void StartBall()
+    {
+        _isStarted = true;
+        StartMove();
+    }
 
     #endregion
+
+
+   
 }

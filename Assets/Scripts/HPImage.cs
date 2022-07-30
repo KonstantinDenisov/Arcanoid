@@ -14,27 +14,13 @@ public class HPImage : MonoBehaviour
 
     #region Unity Lifecycle
 
-    private void Awake()
-    {
-        
-    }
 
-    private void Start()
-    {
-      
-    }
-
-    private void OnDestroy()
-    {
-        
-    }
-
-   
 
     private void Update()
     {
-       // if (HP.Length >= Statistics.Instance.HPCount - 1)
-       //     _hpSpriteRenderer.sprite = HP[Statistics.Instance.HPCount - 1];
+       if (HP.Length >= Statistics.Instance.HPCount - 1)
+           _hpSpriteRenderer.sprite = HP[Statistics.Instance.HPCount - 1];
+       
         
     }
 
