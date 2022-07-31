@@ -26,6 +26,8 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private Transform _transform;
     
+    [SerializeField] private float _minSpeed = 1;
+    
     
     private Vector2 _startDirection;
 
@@ -87,6 +89,18 @@ public class Ball : MonoBehaviour
         Vector3 currentPosition = transform.position;
         currentPosition.x = padPosition.x;
         transform.position = currentPosition;
+    }
+    
+    public void ChangeSpeed(float speedMultiplier)
+    {
+        Vector2 velocity = _rb.velocity;
+        float velocityMagnitude = velocity.magnitude;
+        velocityMagnitude *= speedMultiplier;
+
+        if (velocityMagnitude < _minSpeed)
+            velocityMagnitude = _minSpeed;
+
+        _rb.velocity = velocity.normalized * velocityMagnitude;
     }
 
     #endregion

@@ -9,7 +9,14 @@ public class CheckWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        GameManager.Instance.LoseLife();
+        if (col.gameObject.CompareTag(Tags.Ball))
+        {
+            GameManager.Instance.LoseLife();
+        }
+        else
+        {
+            Destroy(col.gameObject);
+        }
     }
 
     #endregion

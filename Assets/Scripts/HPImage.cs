@@ -18,6 +18,10 @@ public class HPImage : MonoBehaviour
     {
        if (HP.Length >= Statistics.Instance.HPCount - 1)
            _hpSpriteRenderer.sprite = HP[Statistics.Instance.HPCount - 1];
+       else
+       {
+           return;
+       }
     }
 
     #endregion

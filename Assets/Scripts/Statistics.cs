@@ -19,6 +19,13 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     #endregion
 
 
+    #region Events
+
+    
+
+    #endregion
+
+
     #region Unity LifeCycle
 
     private void Start()
@@ -41,6 +48,11 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
           //_hpSR.sprite = HP[HP.Length - Iterator];
         Iterator++;
         HPCount--;
+    }
+    
+    public void ChangeScore(int score)
+    {
+        Points += score;
     }
 
     #endregion
