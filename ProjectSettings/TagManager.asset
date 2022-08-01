@@ -19,7 +19,7 @@ TagManager:
   - PickUp
   - CheckWall
   - Wall
-  - 
+  - VFX
   - 
   - 
   - 
@@ -48,4 +48,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 702269185
+    locked: 0
+  - name: VFX
+    uniqueID: 3389809123
     locked: 0

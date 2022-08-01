@@ -21,7 +21,7 @@ public class Block : MonoBehaviour
     protected int Iterator = 1;
 
     [Header("PickUp")]
-    [SerializeField] private GameObject _pickUpPrefab;
+    [SerializeField] private GameObject [] _pickUpPrefab;
 
     [Range(0f, 1f)]
     [SerializeField] private float _pickUpSpawnChance = 0.5f;
@@ -81,13 +81,14 @@ public class Block : MonoBehaviour
 
     private void SpawnPickUp()
     {
-        if (_pickUpPrefab == null)
+        if (_pickUpPrefab.Length == 0)
             return;
         
         float random = Random.Range(0f, 1f);
         if (random <= _pickUpSpawnChance)
         {
-            Instantiate(_pickUpPrefab, transform.position, Quaternion.identity);
+            int random2 = Random.Range(0, _pickUpPrefab.Length);
+            Instantiate(_pickUpPrefab[random2], transform.position, Quaternion.identity);
         }
     }
 

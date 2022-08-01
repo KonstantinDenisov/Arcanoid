@@ -130,3 +130,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e89efc2f3acec0a4d8f856f862430df1, type: 3}
   - {fileID: 21300000, guid: 5f9f57b54cfeabb488b59e4e75e626bb, type: 3}
   _spriteRenderer: {fileID: 4055525885809818171}
+  _pickUpPrefab:
+  - {fileID: 8022934112078094337, guid: b6d6405a6b11d16439fea1e154c0b054, type: 3}
+  - {fileID: 4840364698534082756, guid: 14ae20039fd83734089bdab0b4049768, type: 3}
+  - {fileID: 4840364698534082756, guid: 14ae20039fd83734089bdab0b4049768, type: 3}
+  - {fileID: 506321635290031516, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+  - {fileID: 506321635290031516, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+  - {fileID: 506321635290031516, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+  - {fileID: 506321635290031516, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+  - {fileID: 506321635290031516, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+  _pickUpSpawnChance: 0.5
