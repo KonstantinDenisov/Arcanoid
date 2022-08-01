@@ -7,7 +7,6 @@ using Image = UnityEngine.UIElements.Image;
 public class Statistics : SingletonMonoBehaviour<Statistics>
 {
     #region Variables
-
     
     public int Points;
     public int Attempt = 1;
@@ -17,29 +16,8 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     [FormerlySerializedAs("_hp")] [SerializeField] public int HPCount = 4;
 
     #endregion
-
-
-    #region Events
-
     
 
-    #endregion
-
-
-    #region Unity LifeCycle
-
-    private void Start()
-    {
-        LevelManager.Instance.OnAllBlocksDestroyed += PerformWinn;
-    }
-
-    private void OnDestroy()
-    {
-        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWinn;
-    }
-
-    #endregion
-    
     #region Public Methods
 
     public void NextImage()
@@ -53,18 +31,6 @@ public class Statistics : SingletonMonoBehaviour<Statistics>
     public void ChangeScore(int score)
     {
         Points += score;
-    }
-
-    #endregion
-
-
-    #region Private Methods
-
-   
-
-    private void PerformWinn()
-    {
-        
     }
 
     #endregion

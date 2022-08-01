@@ -34,6 +34,8 @@ public class Ball : MonoBehaviour
     private Vector2 _startPosition;
     
     private bool _isStarted;
+
+    [SerializeField] private Ball _newBall;
     
     #endregion
     
@@ -101,6 +103,11 @@ public class Ball : MonoBehaviour
             velocityMagnitude = _minSpeed;
 
         _rb.velocity = velocity.normalized * velocityMagnitude;
+    }
+
+    public void AddBall()
+    {
+        Instantiate(_newBall, transform.position, Quaternion.identity);
     }
 
     #endregion

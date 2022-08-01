@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
+using Random = UnityEngine.Random;
 
 public class Block : MonoBehaviour
 {
@@ -12,12 +13,18 @@ public class Block : MonoBehaviour
     
     #region Variables
 
+    [Header("Block")]
     [SerializeField] protected int _hp;
     [SerializeField] protected int _points;
     [SerializeField] protected Sprite[] _images;
     [SerializeField] protected SpriteRenderer _spriteRenderer;
     protected int Iterator = 1;
 
+    [Header("PickUp")]
+    [SerializeField] private GameObject _pickUpPrefab;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float _pickUpSpawnChance = 0.5f;
     
 
     #endregion
@@ -39,6 +46,7 @@ public class Block : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D col)
     {
+        SpawnPickUp();
         ApplyDamage();
     }
 
@@ -64,6 +72,23 @@ public class Block : MonoBehaviour
         
         Iterator++;
         _points--;
+    }
+
+    #endregion
+
+
+    #region PrivateMethods
+
+    private void SpawnPickUp()
+    {
+        if (_pickUpPrefab == null)
+            return;
+        
+        float random = Random.Range(0f, 1f);
+        if (random <= _pickUpSpawnChance)
+        {
+            Instantiate(_pickUpPrefab, transform.position, Quaternion.identity);
+        }
     }
 
     #endregion
