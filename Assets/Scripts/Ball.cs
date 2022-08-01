@@ -138,5 +138,9 @@ public class Ball : MonoBehaviour
     #endregion
 
 
-   
+    public void ChangeScale(float multiplier)
+    {
+        var transform1 = gameObject.GetComponent<Transform>();
+        transform1.localScale = new Vector3(1f*multiplier, 1f*multiplier, (float) 1f*multiplier);
+    }
 }

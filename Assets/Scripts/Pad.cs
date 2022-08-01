@@ -9,6 +9,8 @@ public class Pad : MonoBehaviour
     public bool IsPadCatcher;
 
     #endregion
+    
+    
     #region Unity Lifecycle
 
     private void Update()
@@ -40,9 +42,10 @@ public class Pad : MonoBehaviour
 
     #region Public Methods
 
-    public void CatchBall()
+    public void ChangeScale(float multiplier)
     {
-        
+        var transform1 = gameObject.GetComponent<Transform>();
+        transform1.localScale = new Vector3(1f*multiplier, (float) 0.5, (float) 0.5);
     }
 
     #endregion

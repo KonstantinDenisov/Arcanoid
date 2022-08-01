@@ -5,7 +5,7 @@ public class BallSpeedChangePickUp : PickUpBase
     #region Variables
 
     [Header(nameof(BallSpeedChangePickUp))]
-    [SerializeField] private float _speedMultiplier = 2f;
+    [SerializeField] private float _speedMultiplier;
 
     #endregion
 
