@@ -26,7 +26,18 @@ public class Ball : MonoBehaviour
 
     [SerializeField] private Transform _transform;
     
-    [SerializeField] private float _minSpeed = 1;
+    [Range(1f,5f)]
+    [SerializeField] private float _minSpeed = 5;
+    
+    [Range(10f,50f)]
+    [SerializeField] private float _maxSpeed = 20;
+    
+    
+    [SerializeField] private Vector3 _minScale = Vector3.one;
+    [SerializeField] private Vector3 _maxScale;
+    
+    [Range(5f,10f)]
+    
     
     
     private Vector2 _startDirection;
@@ -113,6 +124,26 @@ public class Ball : MonoBehaviour
     #endregion
 
 
+    public void ChangeScale(float multiplier)
+    {
+        Vector3 currentScale = transform.localScale;
+        currentScale *= multiplier;
+        
+        if (currentScale.magnitude > _maxScale.magnitude)
+        {
+            currentScale = _maxScale;
+        }
+
+        if (currentScale.magnitude < _minScale.magnitude)
+        {
+            currentScale = _minScale;
+        }
+        
+        transform.localScale = currentScale;
+
+    }
+
+
     #region Private Methods
 
     private void OnDrawGizmos()
@@ -128,7 +159,7 @@ public class Ball : MonoBehaviour
         Vector2 randomDirection = new Vector2(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
         _startDirection = randomDirection.normalized * _speed; 
     }
-    
+
     private void StartBall()
     {
         _isStarted = true;
@@ -136,11 +167,5 @@ public class Ball : MonoBehaviour
     }
 
     #endregion
-
-
-    public void ChangeScale(float multiplier)
-    {
-        var transform1 = gameObject.GetComponent<Transform>();
-        transform1.localScale = new Vector3(1f*multiplier, 1f*multiplier, (float) 1f*multiplier);
-    }
+    
 }

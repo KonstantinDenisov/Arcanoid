@@ -8,9 +8,12 @@ public class Pad : MonoBehaviour
 
     public bool IsPadCatcher;
 
+    [SerializeField] private Vector3 _minScale = Vector3.one;
+    [SerializeField] private Vector3 _maxScale;
+
     #endregion
-    
-    
+
+
     #region Unity Lifecycle
 
     private void Update()
@@ -18,23 +21,22 @@ public class Pad : MonoBehaviour
         if (PauseManager.Instance.IsPaused == true)
             return;
         
-            Vector3 mousePositionInPixels = Input.mousePosition;
-            Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
+        Vector3 mousePositionInPixels = Input.mousePosition;
+        Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
 
-            Vector3 currentPosition = transform.position;
-            currentPosition.x = mousePositionInUnits.x;
-            transform.position = currentPosition;
-
+        Vector3 currentPosition = transform.position;
+        currentPosition.x = mousePositionInUnits.x;
+        transform.position = currentPosition;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (IsPadCatcher)
-            if (col.gameObject.CompareTag(Tags.Ball))
-            {
-                var ball = col.gameObject.GetComponent<Ball>();
-                ball.RestartBall();
-            }
+        if (IsPadCatcher & col.gameObject.CompareTag(Tags.Ball))
+        {
+            Ball ball = col.gameObject.GetComponent<Ball>();
+            ball.RestartBall();
+        }
+           
     }
 
     #endregion
@@ -44,8 +46,20 @@ public class Pad : MonoBehaviour
 
     public void ChangeScale(float multiplier)
     {
-        var transform1 = gameObject.GetComponent<Transform>();
-        transform1.localScale = new Vector3(1f*multiplier, (float) 0.5, (float) 0.5);
+        Vector3 currentScale = transform.localScale;
+        currentScale *= multiplier;
+
+        if (currentScale.magnitude > _maxScale.magnitude)
+        {
+            currentScale = _maxScale;
+        }
+
+        if (currentScale.magnitude < _minScale.magnitude)
+        {
+            currentScale = _minScale;
+        }
+
+        transform.localScale = currentScale;
     }
 
     #endregion

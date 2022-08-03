@@ -129,7 +129,6 @@ MonoBehaviour:
   _images:
   - {fileID: 21300000, guid: e89efc2f3acec0a4d8f856f862430df1, type: 3}
   - {fileID: 21300000, guid: 5f9f57b54cfeabb488b59e4e75e626bb, type: 3}
-  - {fileID: 21300000, guid: 360a1c62f04cfc843a9774d71c18bf18, type: 3}
   _spriteRenderer: {fileID: 4055525885809818171}
   _pickUpPrefab:
   - {fileID: 8022934112078094337, guid: b6d6405a6b11d16439fea1e154c0b054, type: 3}
