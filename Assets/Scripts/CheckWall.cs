@@ -11,6 +11,8 @@ public class CheckWall : MonoBehaviour
     {
         if (col.gameObject.CompareTag(Tags.Ball))
         {
+            //Ball ball = col.gameObject.GetComponent<Ball>();
+            //ball.OnBallFall();
             GameManager.Instance.LoseLife();
         }
         else

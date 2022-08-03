@@ -1,5 +1,4 @@
-﻿using System;
-using Unity.VisualScripting;
+﻿using System.Drawing;
 using UnityEngine;
 
 public class Pad : MonoBehaviour
@@ -10,6 +9,7 @@ public class Pad : MonoBehaviour
 
     [SerializeField] private Vector3 _minScale = Vector3.one;
     [SerializeField] private Vector3 _maxScale;
+    private Point _contactPoint;
 
     #endregion
 
@@ -18,7 +18,7 @@ public class Pad : MonoBehaviour
 
     private void Update()
     {
-        if (PauseManager.Instance.IsPaused == true)
+        if (PauseManager.Instance.IsPaused)
             return;
         
         Vector3 mousePositionInPixels = Input.mousePosition;
@@ -35,6 +35,10 @@ public class Pad : MonoBehaviour
         {
             Ball ball = col.gameObject.GetComponent<Ball>();
             ball.RestartBall();
+
+           // _contactPoint = transform.position - col.GetContact(0).point;
+           // ball.IsStarted = false;
+           // ball.transform.position = _contactPoint;
         }
            
     }

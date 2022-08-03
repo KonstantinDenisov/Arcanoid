@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Ball : MonoBehaviour
@@ -10,7 +11,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Pad _pad;
 
-    [SerializeField] private float _speed = 5f;
+    [FormerlySerializedAs("_speed")] [SerializeField] private float _startSpeed = 5f;
     
     [Range(-1,1)]
     [SerializeField] private float _xMin;
@@ -34,30 +35,45 @@ public class Ball : MonoBehaviour
     
     
     [SerializeField] private Vector3 _minScale = Vector3.one;
-    [SerializeField] private Vector3 _maxScale;
     
     [Range(5f,10f)]
-    
-    
+    [SerializeField] private Vector3 _maxScale;
+
+    private float _currentSpeed;
     
     private Vector2 _startDirection;
 
     private Vector2 _startPosition;
     
-    private bool _isStarted;
+    [FormerlySerializedAs("_isStarted")] public bool IsStarted;
 
-    [SerializeField] private Ball _newBall;
-    
+    private bool _isNewBall;
+    private BallsHandler _ballsHandler;
+
+    #endregion
+
+
+    #region Events
+
+    public event Action OnBallCreated;
+    public event Action OnBallFell;
+
     #endregion
     
 
 
     #region Unity LifeCycle
-
+    
     private void Start()
     {
-        
+        if (_isNewBall)
+        {
+            return;
+        }
+        _currentSpeed = _startSpeed;
+        RestartBall();
     }
+    
 
     private void Awake()
     {
@@ -68,7 +84,7 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (_isStarted)
+        if (IsStarted)
             return;
 
         MoveWithPad();
@@ -86,9 +102,13 @@ public class Ball : MonoBehaviour
 
     public void RestartBall()
     {
-        _isStarted = false;
+        IsStarted = false;
         _rb.velocity = Vector2.zero;
         transform.position = _startPosition;
+
+        transform.localScale = _minScale;
+        _currentSpeed = _startSpeed;
+        MoveWithPad();
     }
 
     public void StartMove()
@@ -116,13 +136,13 @@ public class Ball : MonoBehaviour
         _rb.velocity = velocity.normalized * velocityMagnitude;
     }
 
-    public void AddBall()
+    public void Copy (Ball ball)
     {
-        Instantiate(_newBall, transform.position, Quaternion.identity);
+        _startSpeed = ball._startSpeed;
+        _isNewBall = true;
+        IsStarted = true;
+        StartMove();
     }
-
-    #endregion
-
 
     public void ChangeScale(float multiplier)
     {
@@ -142,6 +162,21 @@ public class Ball : MonoBehaviour
         transform.localScale = currentScale;
 
     }
+    
+    public void OnBallFall()
+    {
+        OnBallFell?.Invoke();
+        if (_ballsHandler.BallCount == 0)
+        {
+            RestartBall();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    #endregion
 
 
     #region Private Methods
@@ -157,12 +192,12 @@ public class Ball : MonoBehaviour
     private void CalculateDirection()
     {
         Vector2 randomDirection = new Vector2(Random.Range(_xMin, _xMax), Random.Range(_yMin, _yMax));
-        _startDirection = randomDirection.normalized * _speed; 
+        _startDirection = randomDirection.normalized * _startSpeed; 
     }
 
     private void StartBall()
     {
-        _isStarted = true;
+        IsStarted = true;
         StartMove();
     }
 

@@ -13,4 +13,7 @@
         {
             FindObjectOfType<Pad>().ChangeScale(_multiplier);
         }
+        
     }
+    
+    

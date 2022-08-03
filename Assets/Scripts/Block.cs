@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Net.Mime;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class Block : MonoBehaviour
 {
-   
-    
     #region Variables
 
     [Header("Block")]
@@ -21,18 +14,19 @@ public class Block : MonoBehaviour
     protected int Iterator = 1;
 
     [Header("PickUp")]
-    [SerializeField] private GameObject [] _pickUpPrefab;
+    [SerializeField] private GameObject[] _pickUpPrefab;
 
     [Range(0f, 1f)]
     [SerializeField] private float _pickUpSpawnChance = 0.5f;
-    
 
     #endregion
-    
-    #region Events
-    public static event Action <Block> OnDestroyed;
 
-    public static event Action<Block> OnCreated; 
+
+    #region Events
+
+    public static event Action<Block> OnDestroyed;
+
+    public static event Action<Block> OnCreated;
 
     #endregion
 
@@ -46,7 +40,6 @@ public class Block : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D col)
     {
-        SpawnPickUp();
         ApplyDamage();
     }
 
@@ -65,25 +58,33 @@ public class Block : MonoBehaviour
         Statistics.Instance.Points += _points;
         _hp--;
         if (_hp == 0)
-            Destroy(gameObject);
-        
-        if (_images.Length - Iterator >=0)
+        { 
+            DestroyBlock();
+        }
+            
+
+        if (_images.Length - Iterator >= 0)
             _spriteRenderer.sprite = _images[_images.Length - Iterator];
-        
+
         Iterator++;
         _points--;
     }
-
     #endregion
 
 
     #region PrivateMethods
 
+    private void DestroyBlock()
+    {
+        SpawnPickUp();
+        Destroy(gameObject); 
+    }
+
     private void SpawnPickUp()
     {
-        if (_pickUpPrefab.Length == 0)
+        if (_pickUpPrefab == null || _pickUpPrefab.Length == 0)
             return;
-        
+
         float random = Random.Range(0f, 1f);
         if (random <= _pickUpSpawnChance)
         {
@@ -93,7 +94,4 @@ public class Block : MonoBehaviour
     }
 
     #endregion
-
-
-   
 }

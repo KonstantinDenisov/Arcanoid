@@ -13,8 +13,14 @@ public class ChangeScaleBallPickUP : PickUpBase
 
     protected override void ApplyEffect(Collision2D col)
     {
-        FindObjectOfType<Ball>().ChangeScale(_multiplier);
+        Ball[] balls = FindObjectsOfType<Ball>();
+        foreach (Ball ball in balls)
+        {
+            ball.ChangeScale(_multiplier);
+        }
     }
 
     #endregion
+    
+    
 }

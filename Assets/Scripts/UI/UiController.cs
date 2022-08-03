@@ -36,12 +36,14 @@ public class UiController : MonoBehaviour
     private void GameWin()
     {
         _gameWinScreen.SetActive(true);  
+        PauseManager.Instance.StopTime();
     }
 
 
     private void GameOver()
     { 
         _gameOverLabel.SetActive(true);
+        PauseManager.Instance.StopTime();
     }
         
 }

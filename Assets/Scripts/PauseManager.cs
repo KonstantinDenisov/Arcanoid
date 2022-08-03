@@ -47,7 +47,7 @@ public class PauseManager : SingletonMonoBehaviour<PauseManager>
         OnPaused?.Invoke(IsPaused);
     }
 
-   
+
 
     #endregion
 
