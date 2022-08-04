@@ -48,7 +48,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         Statistics.Instance.Attempt++;
         Statistics.Instance.NextImage();
         CheckGameOver();
-        
+
     }
 
     #endregion

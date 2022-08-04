@@ -16,7 +16,7 @@ public class HPImage : MonoBehaviour
     
     private void Update()
     {
-       if (HP.Length >= Statistics.Instance.HPCount - 1)
+       if (Statistics.Instance.HPCount - 1 >= 0)
            _hpSpriteRenderer.sprite = HP[Statistics.Instance.HPCount - 1];
        else
        {

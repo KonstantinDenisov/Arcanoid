@@ -105,6 +105,7 @@ public class Ball : MonoBehaviour
         IsStarted = false;
         _rb.velocity = Vector2.zero;
         transform.position = _startPosition;
+        _transform.localScale = _minScale;
 
         transform.localScale = _minScale;
         _currentSpeed = _startSpeed;
