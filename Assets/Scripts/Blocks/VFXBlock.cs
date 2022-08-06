@@ -16,8 +16,6 @@
         {
             base.Start();
             SetVFXSettings();
-            
-
         }
 
         protected override void ApplyDamage()

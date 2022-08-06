@@ -49,6 +49,13 @@ public class Ball : MonoBehaviour
 
     private bool _isNewBall;
     private BallsHandler _ballsHandler;
+    
+    [Header("Music")]
+    [SerializeField] private AudioSource _audioSource;
+    
+    [SerializeField] private float _explosiveRadius;
+    [SerializeField] private LayerMask _layerMask;
+    public bool IsExplosiveBall;
 
     #endregion
 
@@ -95,6 +102,21 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        _audioSource.Play();
+        if (IsExplosiveBall)
+        {
+            Explode();
+        }
+            
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _explosiveRadius);
+    }
+
     #endregion
 
 
@@ -109,6 +131,7 @@ public class Ball : MonoBehaviour
         _currentSpeed = _startSpeed;
         _pad.IsPadCatcher = false;
         MoveWithPad();
+        IsExplosiveBall = false;
     }
 
     public void StartMove()
@@ -199,6 +222,20 @@ public class Ball : MonoBehaviour
     {
         IsStarted = true;
         StartMove();
+    }
+    
+    private void Explode()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosiveRadius, _layerMask);
+
+        foreach (Collider2D collider1 in colliders)
+        {
+            Block blockToExplode = collider1.GetComponent<Block>();
+            if (blockToExplode != null)
+            {
+                blockToExplode.DestroyBlock();
+            }
+        }
     }
 
     #endregion
