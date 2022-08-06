@@ -42,6 +42,7 @@ using UnityEngine;
             transformRotation.y = _config.TransformRotationY;
             Vector3 currentScale = _transform.localScale;
             currentScale *= _config.Multiplierscal;
+            _transform.localScale = currentScale;
 
             // Emission.rateOverTime = 0
         }

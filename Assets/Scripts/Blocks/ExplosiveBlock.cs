@@ -47,7 +47,11 @@ public class ExplosiveBlock : Block
         foreach (Collider2D collider1 in colliders)
         {
             Block blockToExplode = collider1.GetComponent<Block>();
-            blockToExplode.DestroyBlock();
+            if (blockToExplode != null)
+            {
+                blockToExplode.DestroyBlock();
+            }
+            
         }
     }
 

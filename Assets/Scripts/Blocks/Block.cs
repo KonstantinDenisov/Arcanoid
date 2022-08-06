@@ -119,6 +119,7 @@ public class Block : MonoBehaviour
 
     public virtual void DestroyBlock()
     {
+        AudioPlayer.Instance.PlaySound(_audioClip);
         SpawnPickUp();
         Destroy(gameObject); 
     }
