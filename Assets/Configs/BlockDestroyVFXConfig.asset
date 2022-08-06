@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61054847203e47f8bb90fc7bdbd0b74b, type: 3}
+  m_Name: BlockDestroyVFXConfig
+  m_EditorClassIdentifier: 
+  _startLifetime: 1
+  _startSpeed: 2
+  _duration: 0.5
+  _maxParticles: 10
+  _rateOverTimeMin: 0
+  _rateOverTimeMax: 0
+  _gravityModifier: 0.5
+  _ShapeRadius: 0.2
+  _playOnAwake: 0

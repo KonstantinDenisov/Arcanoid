@@ -14,10 +14,12 @@ public class Block : MonoBehaviour
     protected int Iterator = 1;
 
     [Header("PickUp")]
-    [SerializeField] private GameObject[] _pickUpPrefab;
-
     [Range(0f, 1f)]
-    [SerializeField] private float _pickUpSpawnChance = 0.5f;
+    [SerializeField] private float _pickUpSpawnChance;
+    [SerializeField] private PickUpInfo[] _pickUpInfoArray;
+
+    [Header("Music")]
+    [SerializeField] private AudioClip _audioClip;
 
     #endregion
 
@@ -74,23 +76,51 @@ public class Block : MonoBehaviour
 
     #region PrivateMethods
 
-    private void DestroyBlock()
-    {
-        SpawnPickUp();
-        Destroy(gameObject); 
-    }
-
     private void SpawnPickUp()
     {
-        if (_pickUpPrefab == null || _pickUpPrefab.Length == 0)
+        if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
             return;
 
         float random = Random.Range(0f, 1f);
-        if (random <= _pickUpSpawnChance)
+        if (random > _pickUpSpawnChance)
+            return;
+
+        int chanceSum = 0;
+
+        foreach (PickUpInfo pickUpInfo in _pickUpInfoArray)
         {
-            int random2 = Random.Range(0, _pickUpPrefab.Length);
-            Instantiate(_pickUpPrefab[random2], transform.position, Quaternion.identity);
+            chanceSum += pickUpInfo.SpawnChance;
         }
+
+        int randomChance = Random.Range(0, chanceSum);
+        int currentChance = 0;
+        int currentIndex = 0;
+
+        for (int i = 0; i < _pickUpInfoArray.Length; i++)
+        {
+            PickUpInfo pickUpInfo = _pickUpInfoArray[i];
+            currentChance += pickUpInfo.SpawnChance;
+
+            if (currentChance >= randomChance)
+            {
+                currentIndex = i;
+                break;
+            }
+        }
+
+        PickUpBase pickUpPrefab = _pickUpInfoArray[currentIndex].PickUpPrefab;
+        Instantiate(pickUpPrefab, transform.position, Quaternion.identity);
+    }
+
+    #endregion
+
+
+    #region Public Methods
+
+    public virtual void DestroyBlock()
+    {
+        SpawnPickUp();
+        Destroy(gameObject); 
     }
 
     #endregion
