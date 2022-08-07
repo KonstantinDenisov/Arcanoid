@@ -35,6 +35,12 @@
             Iterator++;
             _points--;
         }
+        
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            SpawnPickUp();
+        }
 
         #endregion
 

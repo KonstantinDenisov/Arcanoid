@@ -45,7 +45,7 @@ public class Block : MonoBehaviour
         ApplyDamage();
     }
 
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
     }
@@ -76,7 +76,7 @@ public class Block : MonoBehaviour
 
     #region PrivateMethods
 
-    private void SpawnPickUp()
+    protected void SpawnPickUp()
     {
         if (_pickUpInfoArray == null || _pickUpInfoArray.Length == 0)
             return;
