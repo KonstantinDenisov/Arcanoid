@@ -4976,7 +4976,7 @@ MonoBehaviour:
     SpawnChance: 1
   - name: 
     PickUpPrefab: {fileID: 2293750318578530099, guid: de2f26182c89ec547b12530679e190fb, type: 3}
-    SpawnChance: 1
+    SpawnChance: 9
   - name: 
     PickUpPrefab: {fileID: 2909112462330310362, guid: cbb1023eea9a1b44a99841727c96d819, type: 3}
     SpawnChance: 1
@@ -4986,6 +4986,9 @@ MonoBehaviour:
   - name: 
     PickUpPrefab: {fileID: 5725330266589072853, guid: 9c3af4dd1299eb14aa52344bcde16643, type: 3}
     SpawnChance: 1
+  - name: 
+    PickUpPrefab: {fileID: 7064412584226782082, guid: 0b9de331b7f47f044b72af7ac6e8626b, type: 3}
+    SpawnChance: 4
   _audioClip: {fileID: 0}
   _particleSystem: {fileID: 3827374843869392014}
   _config: {fileID: 0}

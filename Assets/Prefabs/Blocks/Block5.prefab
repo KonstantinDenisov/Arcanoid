@@ -133,27 +133,21 @@ MonoBehaviour:
   _pickUpSpawnChance: 1
   _pickUpInfoArray:
   - name: 
-    PickUpPrefab: {fileID: 3084705104023967265, guid: 7f953d40ba978dd43b46bc894894b6a0, type: 3}
-    SpawnChance: 8
+    PickUpPrefab: {fileID: 2293750318578530099, guid: de2f26182c89ec547b12530679e190fb, type: 3}
+    SpawnChance: 9
   - name: 
-    PickUpPrefab: {fileID: 8022934112078094340, guid: b6d6405a6b11d16439fea1e154c0b054, type: 3}
+    PickUpPrefab: {fileID: 5327303015462516471, guid: 14ae20039fd83734089bdab0b4049768, type: 3}
+    SpawnChance: 9
+  - name: 
+    PickUpPrefab: {fileID: 2909112462330310362, guid: cbb1023eea9a1b44a99841727c96d819, type: 3}
     SpawnChance: 1
-  - name: 
-    PickUpPrefab: {fileID: 5725330266589072853, guid: 9c3af4dd1299eb14aa52344bcde16643, type: 3}
-    SpawnChance: 3
   - name: 
     PickUpPrefab: {fileID: 7064412584226782082, guid: 0b9de331b7f47f044b72af7ac6e8626b, type: 3}
     SpawnChance: 4
   - name: 
-    PickUpPrefab: {fileID: 2909112462330310362, guid: cbb1023eea9a1b44a99841727c96d819, type: 3}
-    SpawnChance: 10
-  - name: 
-    PickUpPrefab: {fileID: 992163054076226479, guid: d77892d02dfd31241859f433ce002f20, type: 3}
+    PickUpPrefab: {fileID: 5725330266589072853, guid: 9c3af4dd1299eb14aa52344bcde16643, type: 3}
     SpawnChance: 1
   - name: 
-    PickUpPrefab: {fileID: 5327303015462516471, guid: 14ae20039fd83734089bdab0b4049768, type: 3}
-    SpawnChance: 7
-  - name: 
-    PickUpPrefab: {fileID: 2293750318578530099, guid: de2f26182c89ec547b12530679e190fb, type: 3}
-    SpawnChance: 9
+    PickUpPrefab: {fileID: 3084705104023967265, guid: 7f953d40ba978dd43b46bc894894b6a0, type: 3}
+    SpawnChance: 1
   _audioClip: {fileID: 0}
