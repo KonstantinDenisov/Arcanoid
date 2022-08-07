@@ -9,6 +9,7 @@ public class Pad : MonoBehaviour
 
     [SerializeField] private Vector3 _minScale = Vector3.one;
     [SerializeField] private Vector3 _maxScale;
+    [SerializeField] private Ball _ball;
     private Point _contactPoint;
 
     #endregion
@@ -21,12 +22,21 @@ public class Pad : MonoBehaviour
         if (PauseManager.Instance.IsPaused)
             return;
         
-        Vector3 mousePositionInPixels = Input.mousePosition;
-        Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
+        if (GameManager.Instance.IneedAutoPlay)
+        {
+            MoveWithBall();
+        }
+        
+        else
+        {
+            Vector3 mousePositionInPixels = Input.mousePosition;
+            Vector3 mousePositionInUnits = Camera.main.ScreenToWorldPoint(mousePositionInPixels);
 
-        Vector3 currentPosition = transform.position;
-        currentPosition.x = mousePositionInUnits.x;
-        transform.position = currentPosition;
+            Vector3 currentPosition = transform.position;
+            currentPosition.x = mousePositionInUnits.x;
+            transform.position = currentPosition; 
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -40,7 +50,14 @@ public class Pad : MonoBehaviour
            // ball.IsStarted = false;
            // ball.transform.position = _contactPoint;
         }
-           
+    }
+    
+    private void MoveWithBall()
+    {
+        Vector3 ballPositionInUnits = _ball.transform.position;
+        Vector3 currentPosition = transform.position;
+        currentPosition.x = ballPositionInUnits.x;
+        transform.position = currentPosition;
     }
 
     #endregion

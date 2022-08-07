@@ -7,6 +7,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
     private Ball _ball;
     [SerializeField] private TrailRenderer _trailRenderer;
+    public bool IneedAutoPlay;
 
     #endregion
     

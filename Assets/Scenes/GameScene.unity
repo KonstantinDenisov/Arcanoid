@@ -500,6 +500,17 @@ TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 3566596282570576681, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
   m_PrefabInstance: {fileID: 6394314240879728090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &23846970 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6394314240262592940, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
+  m_PrefabInstance: {fileID: 6394314240879728090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b212459df3d142338b9be6fef6ac333a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &48764260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1997,6 +2008,7 @@ MonoBehaviour:
   IsPadCatcher: 0
   _minScale: {x: 1, y: 1, z: 1}
   _maxScale: {x: 0, y: 0, z: 0}
+  _ball: {fileID: 23846970}
 --- !u!1001 &592548368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9974,6 +9986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trailRenderer: {fileID: 0}
+  IneedAutoPlay: 0
 --- !u!4 &1997981341
 Transform:
   m_ObjectHideFlags: 0
