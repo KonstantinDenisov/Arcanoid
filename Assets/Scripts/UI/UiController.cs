@@ -45,6 +45,7 @@ public class UiController : MonoBehaviour
     { 
         _gameOverLabel.SetActive(true);
         PauseManager.Instance.StopTime();
+        AudioPlayer.Instance.AddGameOverAudioClip();
     }
         
 }

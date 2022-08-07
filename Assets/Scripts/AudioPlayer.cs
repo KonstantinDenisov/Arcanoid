@@ -8,6 +8,7 @@ public class AudioPlayer : SingletonMonoBehaviour<AudioPlayer>
     [SerializeField] private AudioClip _negativePickUpAudioClip;
     [SerializeField] private AudioClip _positivePickUpAudioClip;
     [SerializeField] private AudioClip _winAudioClip;
+    [SerializeField] private AudioClip _gameOverAudioClip;
 
     #endregion
 
@@ -34,6 +35,11 @@ public class AudioPlayer : SingletonMonoBehaviour<AudioPlayer>
     public void AddWinAudioClip()
     {
         PlaySound(_winAudioClip);
+    }
+    
+    public void AddGameOverAudioClip()
+    {
+        PlaySound(_gameOverAudioClip);
     }
 
     #endregion

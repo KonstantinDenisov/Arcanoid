@@ -49,6 +49,7 @@ MonoBehaviour:
   _negativePickUpAudioClip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
   _positivePickUpAudioClip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
   _winAudioClip: {fileID: 8300000, guid: 4e1ff8faed12a475eba9be0e46072269, type: 3}
+  _gameOverAudioClip: {fileID: 8300000, guid: a0ca8964c08d54c5dbebf245bdc474ca, type: 3}
 --- !u!82 &1424027012867486430
 AudioSource:
   m_ObjectHideFlags: 0

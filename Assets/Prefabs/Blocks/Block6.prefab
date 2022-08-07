@@ -4969,7 +4969,24 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e89efc2f3acec0a4d8f856f862430df1, type: 3}
   - {fileID: 21300000, guid: 5f9f57b54cfeabb488b59e4e75e626bb, type: 3}
   _spriteRenderer: {fileID: 960830683353064072}
-  _pickUpSpawnChance: 0.5
-  _pickUpInfoArray: []
+  _pickUpSpawnChance: 1
+  _pickUpInfoArray:
+  - name: 
+    PickUpPrefab: {fileID: 5327303015462516471, guid: 14ae20039fd83734089bdab0b4049768, type: 3}
+    SpawnChance: 1
+  - name: 
+    PickUpPrefab: {fileID: 2293750318578530099, guid: de2f26182c89ec547b12530679e190fb, type: 3}
+    SpawnChance: 1
+  - name: 
+    PickUpPrefab: {fileID: 2909112462330310362, guid: cbb1023eea9a1b44a99841727c96d819, type: 3}
+    SpawnChance: 1
+  - name: 
+    PickUpPrefab: {fileID: 3084705104023967265, guid: 7f953d40ba978dd43b46bc894894b6a0, type: 3}
+    SpawnChance: 1
+  - name: 
+    PickUpPrefab: {fileID: 5725330266589072853, guid: 9c3af4dd1299eb14aa52344bcde16643, type: 3}
+    SpawnChance: 1
   _audioClip: {fileID: 0}
   _particleSystem: {fileID: 3827374843869392014}
+  _config: {fileID: 0}
+  _transform: {fileID: 0}
