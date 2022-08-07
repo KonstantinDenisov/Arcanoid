@@ -12,6 +12,7 @@
         protected override void ApplyEffect(Collision2D col)
         {
             Statistics.Instance.HPCount--;
+            FindObjectOfType<Ball>().RestartBall();
             AudioPlayer.Instance.AddNegativePickUpAudioClip();
             Statistics.Instance.ChangeScore(_score);
         }
