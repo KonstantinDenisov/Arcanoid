@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(TrailRenderer))]
+
 public class Ball : MonoBehaviour
 
 {
@@ -56,6 +58,10 @@ public class Ball : MonoBehaviour
     [SerializeField] private float _explosiveRadius;
     [SerializeField] private LayerMask _layerMask;
     public bool IsExplosiveBall;
+    
+
+    [Header("TrailRenderer")]
+    [SerializeField] private TrailRenderer _trailRenderer;
 
     #endregion
 
@@ -64,13 +70,20 @@ public class Ball : MonoBehaviour
 
     public event Action OnBallCreated;
     public event Action OnBallFell;
+    public event Action OnExplosiveBall;
 
     #endregion
     
 
 
     #region Unity LifeCycle
-    
+
+    private void OnEnable()
+    {
+        _trailRenderer.enabled = false;
+        OnExplosiveBall += ChangeImage;
+    }
+
     private void Start()
     {
         if (_isNewBall)
@@ -122,6 +135,13 @@ public class Ball : MonoBehaviour
 
     #region Public Methods
 
+    public void ExplosiveBall()
+    {
+        IsExplosiveBall = true;
+        OnExplosiveBall?.Invoke();
+        _trailRenderer.enabled = true;
+    }
+
     public void RestartBall()
     {
         IsStarted = false;
@@ -132,6 +152,7 @@ public class Ball : MonoBehaviour
         _pad.IsPadCatcher = false;
         MoveWithPad();
         IsExplosiveBall = false;
+        _trailRenderer.enabled = false;
     }
 
     public void StartMove()
@@ -203,6 +224,11 @@ public class Ball : MonoBehaviour
 
 
     #region Private Methods
+    
+    private void ChangeImage()
+    {
+        
+    }
 
     private void OnDrawGizmos()
     {

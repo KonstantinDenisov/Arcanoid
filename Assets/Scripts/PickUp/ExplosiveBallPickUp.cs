@@ -6,7 +6,7 @@ public class ExplosiveBallPickUp : PickUpBase
 
     protected override void ApplyEffect(Collision2D col)
     {
-        FindObjectOfType<Ball>().IsExplosiveBall = true;
+        FindObjectOfType<Ball>().ExplosiveBall();
     }
 
     #endregion

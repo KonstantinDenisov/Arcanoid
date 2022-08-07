@@ -1,11 +1,12 @@
 using System;
+using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     #region Variables
 
     private Ball _ball;
-    
+    [SerializeField] private TrailRenderer _trailRenderer;
 
     #endregion
     

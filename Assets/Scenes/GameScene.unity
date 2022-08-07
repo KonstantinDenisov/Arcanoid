@@ -495,6 +495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e1257d7c739984ea2a6b105c0cc88f, type: 3}
+--- !u!96 &23846965 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 3566596282570576681, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
+  m_PrefabInstance: {fileID: 6394314240879728090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &48764260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2348,7 +2353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000389020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17312786, y: 0.04507909, z: 2.2987044}
+  m_LocalPosition: {x: -7.81, y: 0.04507909, z: 2.2987044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8951,6 +8956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 258e870902cd22342a552a5561f06bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trailRenderer: {fileID: 0}
 --- !u!4 &1997981341
 Transform:
   m_ObjectHideFlags: 0
@@ -9549,6 +9555,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3566596282570576681, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566596282570576681, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6394314240262592937, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9601,6 +9615,10 @@ PrefabInstance:
       propertyPath: _pad
       value: 
       objectReference: {fileID: 584421871}
+    - target: {fileID: 6394314240262592940, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
+      propertyPath: _trailRenderer
+      value: 
+      objectReference: {fileID: 23846965}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b5ed45ccdab7c43b2c66188b6fca40, type: 3}
 --- !u!1001 &7039386086432668669
