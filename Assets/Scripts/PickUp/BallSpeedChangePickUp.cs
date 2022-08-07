@@ -6,6 +6,7 @@ public class BallSpeedChangePickUp : PickUpBase
 
     [Header(nameof(BallSpeedChangePickUp))]
     [SerializeField] private float _speedMultiplier;
+    [SerializeField] private int _score;
 
     #endregion
 
@@ -19,6 +20,8 @@ public class BallSpeedChangePickUp : PickUpBase
         {
             ball.ChangeSpeed(_speedMultiplier);
         }
+        AudioPlayer.Instance.AddPositivePickUpAudioClip();
+        Statistics.Instance.ChangeScore(_score);
     }
 
     #endregion

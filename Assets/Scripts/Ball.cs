@@ -4,12 +4,14 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(TrailRenderer))]
+[RequireComponent(typeof(SpriteRenderer))]
 
 public class Ball : MonoBehaviour
 
 {
     #region Variables
 
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Pad _pad;
 
@@ -58,6 +60,9 @@ public class Ball : MonoBehaviour
     [SerializeField] private float _explosiveRadius;
     [SerializeField] private LayerMask _layerMask;
     public bool IsExplosiveBall;
+
+    [SerializeField] private Sprite _startSprite;
+    [SerializeField] private Sprite _explosiveSprite;
     
 
     [Header("TrailRenderer")]
@@ -90,7 +95,6 @@ public class Ball : MonoBehaviour
         {
             return;
         }
-        _currentSpeed = _startSpeed;
         RestartBall();
     }
     
@@ -140,6 +144,8 @@ public class Ball : MonoBehaviour
         IsExplosiveBall = true;
         OnExplosiveBall?.Invoke();
         _trailRenderer.enabled = true;
+        _spriteRenderer.sprite = _explosiveSprite;
+
     }
 
     public void RestartBall()
@@ -153,6 +159,7 @@ public class Ball : MonoBehaviour
         MoveWithPad();
         IsExplosiveBall = false;
         _trailRenderer.enabled = false;
+        _spriteRenderer.sprite = _startSprite;
     }
 
     public void StartMove()

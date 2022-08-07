@@ -5,6 +5,7 @@ public class ChangeScaleBallPickUP : PickUpBase
     #region Variables
 
     [SerializeField] private float _multiplier;
+    [SerializeField] private int _score;
 
     #endregion
 
@@ -18,6 +19,8 @@ public class ChangeScaleBallPickUP : PickUpBase
         {
             ball.ChangeScale(_multiplier);
         }
+        AudioPlayer.Instance.AddPositivePickUpAudioClip();
+        Statistics.Instance.ChangeScore(_score);
     }
 
     #endregion

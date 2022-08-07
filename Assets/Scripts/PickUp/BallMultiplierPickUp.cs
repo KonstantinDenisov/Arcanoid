@@ -5,6 +5,7 @@ public class BallMultiplierPickUp : PickUpBase
     #region Variables
 
     [SerializeField] private int _multiplier;
+    [SerializeField] private int _score;
 
     #endregion
 
@@ -20,6 +21,8 @@ public class BallMultiplierPickUp : PickUpBase
                 newBall.Copy(ball);
             }
         }
+        AudioPlayer.Instance.AddPositivePickUpAudioClip();
+        Statistics.Instance.ChangeScore(_score);
     }
 
     

@@ -37,6 +37,7 @@ public class UiController : MonoBehaviour
     {
         _gameWinScreen.SetActive(true);  
         PauseManager.Instance.StopTime();
+        AudioPlayer.Instance.AddWinAudioClip();
     }
 
 
