@@ -15,8 +15,8 @@ using UnityEngine;
 
         private void Awake()
         {
-            SetVFXSettings();
-            _particleSystem.Play();
+            //SetVFXSettings();
+            //_particleSystem.Play();
         }
 
         #endregion

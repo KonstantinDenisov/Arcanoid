@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b0456091f64a6eb1f5766449b80ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 0
+  _hp: 1
   _points: 0
   _images: []
   _spriteRenderer: {fileID: 0}
@@ -135,4 +135,4 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
-  _drop: {fileID: 0}
+  _drop: {fileID: 1591722200099909511, guid: f9b77edab343f3a4cb56be53ae5a78f0, type: 3}
